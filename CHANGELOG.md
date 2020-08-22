@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.5
+
+*   `conanfile.py` pulls the version out of `CMakeLists.txt` for packaging.
+*   Selecting the cmake option `SI_INSTALL_LIBRARY=OFF` removes the target `install` completely
+*   Add new-line to the end of all files to fit with the ConanCenter code convention.
+
 ## 1.7.4
 
 *   If SI is built from within conan the conanbuildinfo provided by conan will be used instead of getting it from github
