@@ -1,5 +1,5 @@
 /**
- * This file is part of "SI" version 1.7.5
+ * This file is part of "SI" version 2.0.0
  * A header only c++ library that provides type safety and user defined literals
  * for handling pyhsical values defined in the International System of
  * Units
@@ -21,7 +21,7 @@
 namespace SI {
 
 template <typename _type, typename _ratio>
-using length_t = detail::unit_t<'L', 1, _type, _ratio>;
+using length_t = detail::unit_t<'L', std::ratio<1>, _type, _ratio>;
 
 template <typename _type> using atto_metre_t = length_t<_type, std::atto>;
 template <typename _type> using femto_metre_t = length_t<_type, std::femto>;
@@ -162,4 +162,3 @@ constexpr exa_metre_t<long double> operator""_Em(long double value) {
 
 } // namespace literals
 } // namespace SI
-

@@ -4,6 +4,7 @@ import re, os
 
 
 class SiConan(ConanFile):
+    # todo rename to 'si' lower case to conform to conancenter standards
     name = "SI"
     license = "MIT"
     url = "https://bintray.com/beta/#/bernedom/conan/SI:SI"
@@ -16,12 +17,14 @@ class SiConan(ConanFile):
     no_copy_source = True
     generators = "cmake", "txt", "cmake_find_package"
     build_requires = "Catch2/2.11.1@catchorg/stable"
+    _cmake = None
 
     def _configure_cmake(self):
-        cmake = CMake(self)
-        # Add additional settings with cmake.definitions["SOME_DEFINITION"] = True
-        cmake.configure()
-        return cmake
+        if self._cmake is None:
+            self._cmake = CMake(self)
+            # Add additional settings with cmake.definitions["SOME_DEFINITION"] = True
+            self._cmake.configure()
+        return self._cmake
 
     def set_version(self):
         cmake = load(os.path.join(self.recipe_folder, "CMakeLists.txt"))
