@@ -1,12 +1,21 @@
 <map id="SI/illuminance.h" name="SI/illuminance.h">
-<area shape="rect" id="node2" href="$area_8h.html" title="area.h" alt="" coords="303,80,365,107"/>
-<area shape="rect" id="node7" href="$number__parser_8h.html" title="detail/number_parser.h" alt="" coords="527,379,699,405"/>
-<area shape="rect" id="node9" href="$unit_8h.html" title="detail/unit.h" alt="" coords="407,229,507,256"/>
-<area shape="rect" id="node13" href="$unit__symbol_8h.html" title="detail/unit_symbol.h" alt="" coords="594,229,749,256"/>
-<area shape="rect" id="node16" href="$operator__helpers_8h.html" title="detail/operator_helpers.h" alt="" coords="84,155,269,181"/>
-<area shape="rect" id="node17" href="$luminous__flux_8h.html" title="luminous_flux.h" alt="" coords="465,80,590,107"/>
-<area shape="rect" id="node3" href="$length_8h.html" title="length.h" alt="" coords="294,155,369,181"/>
-<area shape="rect" id="node10" href="$detail_8h.html" title="detail.h" alt="" coords="187,304,257,331"/>
-<area shape="rect" id="node18" href="$luminosity_8h.html" title="luminosity.h" alt="" coords="627,155,729,181"/>
-<area shape="rect" id="node19" href="$solid__angle_8h.html" title="solid_angle.h" alt="" coords="495,155,603,181"/>
+<area shape="rect" id="node1" title=" " alt="" coords="413,5,540,32"/>
+<area shape="rect" id="node2" href="$area_8h.html" title=" " alt="" coords="303,80,365,107"/>
+<area shape="rect" id="node7" href="$number__parser_8h.html" title=" " alt="" coords="527,379,699,405"/>
+<area shape="rect" id="node9" href="$unit_8h.html" title=" " alt="" coords="407,229,507,256"/>
+<area shape="rect" id="node13" href="$unit__symbol_8h.html" title=" " alt="" coords="594,229,749,256"/>
+<area shape="rect" id="node16" href="$operator__helpers_8h.html" title=" " alt="" coords="84,155,269,181"/>
+<area shape="rect" id="node17" href="$luminous__flux_8h.html" title=" " alt="" coords="465,80,590,107"/>
+<area shape="rect" id="node3" href="$length_8h.html" title=" " alt="" coords="294,155,369,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="118,453,177,480"/>
+<area shape="rect" id="node5" title=" " alt="" coords="335,379,387,405"/>
+<area shape="rect" id="node6" title=" " alt="" coords="23,379,109,405"/>
+<area shape="rect" id="node8" title=" " alt="" coords="421,453,487,480"/>
+<area shape="rect" id="node10" href="$detail_8h.html" title=" " alt="" coords="187,304,257,331"/>
+<area shape="rect" id="node12" title=" " alt="" coords="411,379,503,405"/>
+<area shape="rect" id="node11" title=" " alt="" coords="185,379,259,405"/>
+<area shape="rect" id="node14" title=" " alt="" coords="709,304,765,331"/>
+<area shape="rect" id="node15" title=" " alt="" coords="587,304,684,331"/>
+<area shape="rect" id="node18" href="$luminosity_8h.html" title=" " alt="" coords="627,155,729,181"/>
+<area shape="rect" id="node19" href="$solid__angle_8h.html" title=" " alt="" coords="495,155,603,181"/>
 </map>

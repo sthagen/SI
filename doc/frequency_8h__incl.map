@@ -1,7 +1,17 @@
 <map id="SI/frequency.h" name="SI/frequency.h">
-<area shape="rect" id="node2" href="$unit_8h.html" title="detail/unit.h" alt="" coords="303,155,403,181"/>
-<area shape="rect" id="node11" href="$unit__symbol_8h.html" title="detail/unit_symbol.h" alt="" coords="571,155,725,181"/>
-<area shape="rect" id="node14" href="$time_8h.html" title="time.h" alt="" coords="429,80,493,107"/>
-<area shape="rect" id="node3" href="$detail_8h.html" title="detail.h" alt="" coords="318,229,389,256"/>
-<area shape="rect" id="node4" href="$number__parser_8h.html" title="number_parser.h" alt="" coords="5,304,136,331"/>
+<area shape="rect" id="node1" title=" " alt="" coords="405,5,518,32"/>
+<area shape="rect" id="node2" href="$unit_8h.html" title=" " alt="" coords="303,155,403,181"/>
+<area shape="rect" id="node11" href="$unit__symbol_8h.html" title=" " alt="" coords="571,155,725,181"/>
+<area shape="rect" id="node14" href="$time_8h.html" title=" " alt="" coords="429,80,493,107"/>
+<area shape="rect" id="node3" href="$detail_8h.html" title=" " alt="" coords="318,229,389,256"/>
+<area shape="rect" id="node8" title=" " alt="" coords="589,304,641,331"/>
+<area shape="rect" id="node10" title=" " alt="" coords="473,304,565,331"/>
+<area shape="rect" id="node4" href="$number__parser_8h.html" title=" " alt="" coords="5,304,136,331"/>
+<area shape="rect" id="node5" title=" " alt="" coords="312,379,379,405"/>
+<area shape="rect" id="node6" title=" " alt="" coords="141,379,200,405"/>
+<area shape="rect" id="node7" title=" " alt="" coords="160,304,235,331"/>
+<area shape="rect" id="node9" title=" " alt="" coords="310,304,397,331"/>
+<area shape="rect" id="node12" title=" " alt="" coords="620,229,676,256"/>
+<area shape="rect" id="node13" title=" " alt="" coords="701,229,798,256"/>
+<area shape="rect" id="node15" title=" " alt="" coords="428,155,495,181"/>
 </map>
