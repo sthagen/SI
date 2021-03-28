@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="SI-logo-small.jpg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SI
-   &#160;<span id="projectnumber">2.0.4</span>
+   &#160;<span id="projectnumber">2.1.0</span>
    </div>
    <div id="projectbrief">A header only c++ library that provides type safety and user defined literals for handling pyhsical values defined in the International System of Units.</div>
   </td>
@@ -72,13 +72,14 @@ $(function() {
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">unit.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="detail_8h_source.html">detail.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="eps__equal_8h_source.html">eps_equal.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="unit__cast_8h_source.html">unit_cast.h</a>&quot;</code><br />
 <code>#include &lt;ratio&gt;</code><br />
 <code>#include &lt;type_traits&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -86,15 +87,16 @@ Include dependency graph for unit.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="unit_8h__incl.png" border="0" usemap="#SI_2detail_2unit_8h" alt=""/></div>
 <map name="SI_2detail_2unit_8h" id="SI_2detail_2unit_8h">
-<area shape="rect" title=" " alt="" coords="409,5,525,32"/>
-<area shape="rect" href="detail_8h.html" title=" " alt="" coords="323,80,393,107"/>
-<area shape="rect" title=" " alt="" coords="441,155,493,181"/>
-<area shape="rect" title=" " alt="" coords="517,155,609,181"/>
-<area shape="rect" href="number__parser_8h.html" title=" " alt="" coords="25,155,155,181"/>
-<area shape="rect" title=" " alt="" coords="103,229,170,256"/>
-<area shape="rect" title=" " alt="" coords="13,229,71,256"/>
-<area shape="rect" title=" " alt="" coords="179,155,254,181"/>
-<area shape="rect" title=" " alt="" coords="279,155,365,181"/>
+<area shape="rect" title=" " alt="" coords="135,5,251,32"/>
+<area shape="rect" href="detail_8h.html" title=" " alt="" coords="111,155,181,181"/>
+<area shape="rect" title=" " alt="" coords="5,229,57,256"/>
+<area shape="rect" href="eps__equal_8h.html" title=" " alt="" coords="284,80,384,107"/>
+<area shape="rect" title=" " alt="" coords="205,155,297,181"/>
+<area shape="rect" href="unit__cast_8h.html" title=" " alt="" coords="62,80,155,107"/>
+<area shape="rect" href="number__parser_8h.html" title=" " alt="" coords="133,229,263,256"/>
+<area shape="rect" title=" " alt="" coords="117,304,183,331"/>
+<area shape="rect" title=" " alt="" coords="287,229,362,256"/>
+<area shape="rect" title=" " alt="" coords="215,304,274,331"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -149,17 +151,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSI_1_1detail_1_1unit__t.html">SI::detail::unit_t&lt; _symbol, _exponent, _type, _ratio &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">base template class for holding values of type _type to be multiplied with a ratio _ratio  <a href="structSI_1_1detail_1_1unit__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSI_1_1detail_1_1is__unit__t.html">SI::detail::is_unit_t&lt; _unit &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">helper template to check if a type is a <a class="el" href="structSI_1_1detail_1_1unit__t.html" title="base template class for holding values of type _type to be multiplied with a ratio _ratio">unit_t</a> (false for all other types)  <a href="structSI_1_1detail_1_1is__unit__t.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSI_1_1detail_1_1is__unit__t_3_01const_01unit__t_3_01__symbol_00_01__exponent_00_01__type_00_01__ratio_01_4_01_4.html">SI::detail::is_unit_t&lt; const unit_t&lt; _symbol, _exponent, _type, _ratio &gt; &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">template specialisation to check if a type is a <a class="el" href="structSI_1_1detail_1_1unit__t.html" title="base template class for holding values of type _type to be multiplied with a ratio _ratio">unit_t</a> (true if <a class="el" href="structSI_1_1detail_1_1unit__t.html" title="base template class for holding values of type _type to be multiplied with a ratio _ratio">unit_t</a>)  <a href="structSI_1_1detail_1_1is__unit__t_3_01const_01unit__t_3_01__symbol_00_01__exponent_00_01__type_00_01__ratio_01_4_01_4.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSI_1_1detail_1_1is__unit__t_3_01unit__t_3_01__symbol_00_01__exponent_00_01__type_00_01__ratio_01_4_01_4.html">SI::detail::is_unit_t&lt; unit_t&lt; _symbol, _exponent, _type, _ratio &gt; &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">non-const specialisation of check above  <a href="structSI_1_1detail_1_1is__unit__t_3_01unit__t_3_01__symbol_00_01__exponent_00_01__type_00_01__ratio_01_4_01_4.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSI_1_1detail_1_1unit__with__common__ratio.html">SI::detail::unit_with_common_ratio&lt; _unit_lhs, _unit_rhs &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -176,25 +167,9 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a45af83e9f353597a58012c58577724fb"><td class="memTemplParams" colspan="2">template&lt;typename _target_type , typename _rhs_T &gt; </td></tr>
-<tr class="memitem:a45af83e9f353597a58012c58577724fb"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceSI_1_1detail.html#a45af83e9f353597a58012c58577724fb">SI::detail::unit_cast</a> (const _rhs_T &amp;rhs)</td></tr>
-<tr class="memdesc:a45af83e9f353597a58012c58577724fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to cast between two units of the same type  <a href="namespaceSI_1_1detail.html#a45af83e9f353597a58012c58577724fb">More...</a><br /></td></tr>
-<tr class="separator:a45af83e9f353597a58012c58577724fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2614dd22817f47500394f7311a09b68"><td class="memTemplParams" colspan="2">template&lt;typename _type , char _symbol, typename _exponent , typename _rhs_type , typename _ratio , std::enable_if_t&lt; std::is_integral_v&lt; _type &gt;&gt; *  = nullptr&gt; </td></tr>
 <tr class="memitem:ae2614dd22817f47500394f7311a09b68"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceSI_1_1detail.html#ae2614dd22817f47500394f7311a09b68">SI::detail::operator/</a> (const _type &amp;lhs, const unit_t&lt; _symbol, _exponent, _rhs_type, _ratio &gt; &amp;rhs)</td></tr>
 <tr class="separator:ae2614dd22817f47500394f7311a09b68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72bcb436f9c71971933bd49859c77b24"><td class="memTemplParams" colspan="2">template&lt;template&lt; typename... &gt; typename _resulting_unit, typename _unit_lhs , typename _unit_rhs &gt; </td></tr>
-<tr class="memitem:a72bcb436f9c71971933bd49859c77b24"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceSI_1_1detail.html#a72bcb436f9c71971933bd49859c77b24">SI::detail::cross_unit_divide</a> (const _unit_lhs &amp;lhs, const _unit_rhs &amp;rhs)</td></tr>
-<tr class="separator:a72bcb436f9c71971933bd49859c77b24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acae9252988e90f68da5060953a32159e"><td class="memTemplParams" colspan="2">template&lt;template&lt; typename... &gt; typename _resulting_unit, typename _unit_lhs , typename _unit_rhs &gt; </td></tr>
-<tr class="memitem:acae9252988e90f68da5060953a32159e"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceSI_1_1detail.html#acae9252988e90f68da5060953a32159e">SI::detail::cross_unit_multiply</a> (const _unit_lhs &amp;lhs, const _unit_rhs &amp;rhs)</td></tr>
-<tr class="separator:acae9252988e90f68da5060953a32159e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a7778f5458866f2dee0e32bf25acd8d5f"><td class="memTemplParams" colspan="2">template&lt;typename _type &gt; </td></tr>
-<tr class="memitem:a7778f5458866f2dee0e32bf25acd8d5f"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceSI_1_1detail.html#a7778f5458866f2dee0e32bf25acd8d5f">SI::detail::is_unit_t_v</a> = is_unit_t&lt;_type&gt;::value</td></tr>
-<tr class="separator:a7778f5458866f2dee0e32bf25acd8d5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a4801616f306f098065c28d1c782ce0e0"></a>
@@ -208,7 +183,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This file is part of "SI" version 2.0.4 A header only c++ library that provides type safety and user defined literals for handling pyhsical values defined in the International System of Units</p>
+<p>This file is part of "SI" version 2.1.0 A header only c++ library that provides type safety and user defined literals for handling pyhsical values defined in the International System of Units</p>
 <p><a href="https://github.com/bernedom/SI">https://github.com/bernedom/SI</a></p>
 <p>SPDX-License-Identifier: MIT </p>
 
