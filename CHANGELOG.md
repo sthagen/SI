@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.1
+
+*   Tests are built without the need for conan if catch2 is found. (using conan is still the preferred way)
+*   Cleaning up obsolete todos and typos
+
 ## 2.1.0
 
 *   Moved helper function such as `unit_cast` and `unit_with_common_ratio` to own file for easier maintenance
