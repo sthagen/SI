@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.3
+
+*   Fix CI pipeline for windows
+*   Add missing conversion between float and double for operator/ 
+
 ## 2.1.2
 
 *   Update to catch 2.13.6 in the conan recipes
