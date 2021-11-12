@@ -1,5 +1,5 @@
 /**
- * This file is part of "SI" version 2.2.0
+ * This file is part of "SI" version 2.3.0
  * A header only c++ library that provides type safety and user defined literals
  * for handling pyhsical values defined in the International System of
  * Units
@@ -43,6 +43,19 @@ namespace detail {
 BUILD_UNIT_FROM_DIVISON(velocity_t, length_t, time_t)
 } // namespace detail
 
+// specialize unit_symbol for usage with stream operators
+template <>
+struct unit_symbol<'v', std::ratio<1>>
+    : SI::detail::unit_symbol_impl<'m', '/', 's'> {};
+
+template <>
+struct unit_symbol<'v', std::ratio_divide<std::kilo, std::ratio<3600, 1>>::type>
+    : SI::detail::unit_symbol_impl<'k', 'm', '/', 'h'> {};
+
+template <typename _ratio>
+struct unit_symbol<'v', _ratio>
+    : SI::detail::unit_symbol_impl<SI::detail::ratio_prefix<_ratio>::value, 'm',
+                                   '/', 's'> {};
 inline namespace literals {
 
 template <char... _digits> constexpr speed_of_light_t<int64_t> operator""_c() {
