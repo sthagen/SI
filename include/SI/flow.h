@@ -13,19 +13,25 @@
 
 #include "detail/operator_helpers.h"
 
-#include "detail/number_parser.h"
-#include "detail/unit.h"
-#include "mass.h"
-#include "velocity.h"
+#include "area.h"
+#include "time.h"
 
 namespace SI {
 
-/// Type for momentum where o = v * M
 template <typename _type, typename _ratio>
-using momentum_t = detail::unit_t<'o', std::ratio<1>, _type, _ratio>;
+using surface_flow_t = detail::unit_t<'s', std::ratio<1>, _type, _ratio>;
 
 namespace detail {
-BUILD_UNIT_FROM_MULTIPLICATION(momentum_t, velocity_t, mass_t)
+BUILD_UNIT_FROM_DIVISON(surface_flow_t, area_t, time_t)
+
+}
+
+template <typename _type, typename _ratio>
+using volumetric_flow_t = detail::unit_t<'V', std::ratio<1>, _type, _ratio>;
+
+namespace detail {
+BUILD_UNIT_FROM_DIVISON(volumetric_flow_t, volume_t, time_t)
+
 }
 
 } // namespace SI
