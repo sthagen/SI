@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 
-project("SI-Example-conan")
+project(SI-example-conan)
 
 # Download automatically, you can also just copy the conan.cmake file
 if(NOT EXISTS "${CMAKE_CURRENT_BINARY_DIR}/conan.cmake")
@@ -16,8 +16,8 @@ endif()
 include(${CMAKE_CURRENT_BINARY_DIR}/conan.cmake)
 conan_cmake_run(CONANFILE conanfile.txt BASIC_SETUP CMAKE_TARGETS)
 
-find_package(SI CONFIG REQUIRED)
+find_package(SI REQUIRED)
 
-add_executable(${PROJECT_NAME}
+add_executable(SI-example-conan
                ${CMAKE_CURRENT_SOURCE_DIR}/../src/installation-tests/main.cc)
-target_link_libraries(${PROJECT_NAME} SI::SI)
+target_link_libraries(SI-example-conan SI::SI)
