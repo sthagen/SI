@@ -1,0 +1,93 @@
+{
+    "version": 4,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 21,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "ccache-env",
+            "hidden": true,
+            "environment": {
+                "CCACHE_BASEDIR": "${sourceDir}",
+                "CCACHE_SLOPPINESS": "pch_defines,time_macros"
+            }
+        },
+        {
+            "name": "conan-toolchain",
+            "hidden": true,
+            "toolchainFile": "conan_toolchain.cmake",
+            "binaryDir": "${sourceDir}/build"
+        },
+        {
+            "name": "ci-ninja",
+            "displayName": "Ninja",
+            "description": "build using Ninja generator",
+            "inherits": [
+                "ccache-env",
+                "conan-toolchain"
+            ],
+            "generator": "Ninja",
+            "hidden": true
+        },
+        {
+            "name": "ci-ninja-debug",
+            "displayName": "Ninja Debug",
+            "inherits": [
+                "ci-ninja"
+            ],
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "ci-ninja-release",
+            "displayName": "Ninja Release",
+            "inherits": [
+                "ci-ninja"
+            ],
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "ci-windows-msvc2019",
+            "displayName": "MSVC 2019",
+            "generator": "Visual Studio 16 2019",
+            "binaryDir": "${sourceDir}/build",
+            "inherits": [
+                "conan-toolchain"
+            ],
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "ci-msvc2019-debug",
+            "displayName": "MSVC 2019 Debug",
+            "configurePreset": "ci-windows-msvc2019",
+            "configuration": "Debug",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "ci-msvc2019-release",
+            "displayName": "MSVC 2019 release",
+            "configurePreset": "ci-windows-msvc2019",
+            "configuration": "Release",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        }
+    ]
+}

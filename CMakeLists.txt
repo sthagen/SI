@@ -1,8 +1,8 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.23)
 
 project(
   "SI"
-  VERSION 2.5.2
+  VERSION 2.5.3
   DESCRIPTION
     "A header only c++ library that provides type safety and user defined literals for handling physical values defined in the International System of Units."
   HOMEPAGE_URL "https://github.com/bernedom/SI"
@@ -10,6 +10,8 @@ project(
 
 include(GNUInstallDirs)
 include(CTest)
+
+find_package(Catch2)
 
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
   set(IS_TOPLEVEL_PROJECT TRUE)
@@ -22,6 +24,11 @@ option(SI_INSTALL_LIBRARY
        ${IS_TOPLEVEL_PROJECT})
 option(SI_BUILD_TESTING "Build and run SI tests " ${IS_TOPLEVEL_PROJECT})
 option(SI_BUILD_DOC "Generate SI documentation" ${IS_TOPLEVEL_PROJECT})
+
+if(NOT Catch2_FOUND)
+  message(WARNING "Catch2 not found, not building tests")
+  set(SI_BUILD_TESTING OFF)
+endif()
 
 add_library(SI INTERFACE)
 # add alias so the project can be uses with add_subdirectory
@@ -36,6 +43,7 @@ target_include_directories(
 target_compile_features(SI INTERFACE cxx_std_17)
 
 if(BUILD_TESTING AND SI_BUILD_TESTING)
+  include(Catch)
   add_subdirectory(test)
 endif()
 
