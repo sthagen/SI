@@ -1,4 +1,9 @@
-cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 3.23...3.27)
+
+if(NOT DEFINED CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 17)
+  set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
+endif()
 
 project(
   "SI"
@@ -9,28 +14,21 @@ project(
   LANGUAGES CXX)
 
 include(GNUInstallDirs)
-include(CTest)
-
-if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-  set(IS_TOPLEVEL_PROJECT TRUE)
-else()
-  set(IS_TOPLEVEL_PROJECT FALSE)
-endif()
 
 option(SI_INSTALL_LIBRARY
        "Enable installing of SI library into default locations"
-       ${IS_TOPLEVEL_PROJECT})
-option(SI_BUILD_TESTING "Build and run SI tests " ${IS_TOPLEVEL_PROJECT})
-option(SI_BUILD_DOC "Generate SI documentation" ${IS_TOPLEVEL_PROJECT})
+       ${PROJECT_IS_TOP_LEVEL})
+option(SI_BUILD_TESTING "Build and run SI tests " ${PROJECT_IS_TOP_LEVEL})
+option(SI_BUILD_DOC "Generate SI documentation" ${PROJECT_IS_TOP_LEVEL})
 
 # Only search for Catch2 if we're doing testing
 # (this reduces the amount of warnings when added via FetchContent or git submodules)
 if(SI_BUILD_TESTING)
   find_package(Catch2)
-  if (NOT Catch2_FOUND)
+  if(NOT Catch2_FOUND)
     message(WARNING "Catch2 not found, not building tests")
     set(SI_BUILD_TESTING OFF)
-  endif ()
+  endif()
 endif()
 
 add_library(SI INTERFACE)
@@ -45,7 +43,9 @@ target_include_directories(
 
 target_compile_features(SI INTERFACE cxx_std_17)
 
-if(BUILD_TESTING AND SI_BUILD_TESTING)
+if(SI_BUILD_TESTING)
+  enable_testing()
+
   include(Catch)
   add_subdirectory(test)
 endif()

@@ -1,37 +1,52 @@
 {
-    "version": 4,
+    "version": 6,
     "cmakeMinimumRequired": {
         "major": 3,
-        "minor": 21,
+        "minor": 25,
         "patch": 0
     },
     "configurePresets": [
         {
             "name": "ccache-env",
             "hidden": true,
+            "description": "build using ccache",
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER_LAUNCHER ": "ccache"
+            },
             "environment": {
                 "CCACHE_BASEDIR": "${sourceDir}",
                 "CCACHE_SLOPPINESS": "pch_defines,time_macros"
             }
         },
         {
+            "name": "clang-tidy-env",
+            "hidden": true,
+            "description": "build using clang-tidy as precompile step",
+            "cacheVariables": {
+                "CMAKE_CXX_CLANG_TIDY": "clang-tidy"
+            },
+            "environment": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "YES"
+            }
+        },
+        {
             "name": "conan-module-path",
             "hidden": true,
+            "description": "setup using conan toolchain",
+            "binaryDir": "${sourceDir}/build",
             "cacheVariables": {
                 "CMAKE_PREFIX_PATH": "${sourceDir}/build/"
             }
         },
         {
             "name": "ci-ninja",
-            "displayName": "Ninja",
+            "hidden": true,
             "description": "build using Ninja generator",
             "inherits": [
                 "ccache-env",
                 "conan-module-path"
             ],
-            "generator": "Ninja",
-            "hidden": true,
-            "binaryDir": "${sourceDir}/build"
+            "generator": "Ninja"
         },
         {
             "name": "ci-ninja-debug",
@@ -47,6 +62,7 @@
             "name": "ci-ninja-release",
             "displayName": "Ninja Release",
             "inherits": [
+                "clang-tidy-env",
                 "ci-ninja"
             ],
             "cacheVariables": {
@@ -57,7 +73,6 @@
             "name": "ci-windows-msvc2019",
             "displayName": "MSVC 2019",
             "generator": "Visual Studio 16 2019",
-            "binaryDir": "${sourceDir}/build",
             "inherits": [
                 "conan-module-path"
             ],
@@ -90,6 +105,96 @@
                 "lhs": "${hostSystemName}",
                 "rhs": "Windows"
             }
+        },
+        {
+            "name": "ci-ninja-debug",
+            "displayName": "Ninja debug",
+            "configurePreset": "ci-ninja-debug",
+            "configuration": "Debug"
+        },
+        {
+            "name": "ci-ninja-release",
+            "displayName": "Ninja release",
+            "configurePreset": "ci-ninja-release",
+            "configuration": "Release",
+            "targets": [ "all", "api_doc" ]
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "test-common",
+            "description": "Test CMake settings that apply to all configurations",
+            "hidden": true,
+            "output": {
+                "outputOnFailure": true
+            },
+            "execution": {
+                "noTestsAction": "error",
+                "stopOnFailure": true
+            }
+        },
+        {
+            "name": "ci-ninja-debug",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "ci-ninja-debug"
+        },
+        {
+            "name": "ci-ninja-release",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "ci-ninja-release"
+        }
+    ],
+    "packagePresets": [
+        {
+            "name": "ci-ninja-release",
+            "configurePreset": "ci-ninja-release",
+            "generators": [
+                "TGZ"
+            ]
+        }
+    ],
+    "workflowPresets": [
+        {
+            "name": "ci-ninja-debug",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "ci-ninja-debug"
+                },
+                {
+                    "type": "build",
+                    "name": "ci-ninja-debug"
+                },
+                {
+                    "type": "test",
+                    "name": "ci-ninja-debug"
+                }
+            ]
+        },
+        {
+            "name": "ci-ninja-release",
+            "steps": [
+                {
+                    "name": "ci-ninja-release",
+                    "type": "configure"
+                },
+                {
+                    "name": "ci-ninja-release",
+                    "type": "build"
+                },
+                {
+                    "type": "test",
+                    "name": "ci-ninja-release"
+                },
+                {
+                    "name": "ci-ninja-release",
+                    "type": "package"
+                }
+            ]
         }
     ]
 }
